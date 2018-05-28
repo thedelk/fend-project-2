@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+let icons = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'paper-plane-o', 'paper-plane-o', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
 
 /*
  * Display the cards on the page
