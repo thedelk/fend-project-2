@@ -24,7 +24,8 @@
 const icons = ['fire', 'fire', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'code', 'code', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
 
 const $deck = $('.deck');
-const $card = $('.cards');
+$open = $('.open');
+// const $card = $('.cards');
 let flipped = [];
 
 function shuffle(array) {
@@ -54,15 +55,15 @@ function initialize() {
 };
 
 function flip() {
-    let $card = $('.cards');
-    let $open = $('.open');
+    const $card = $('.cards');
     $card.click(function () {
+        console.log($open);
         let $this = $(this);
 
-        if ($this.hasClass('show') || $this.hasClass('match')) {
-            return true;
-            console.log('Returned true');
-        }
+        // if ($this.hasClass('show') || $this.hasClass('match')) {
+        //     return true;
+        //     console.log('Returned true');
+        // }
 
         let card = $this.html();
         $this.addClass('open show');
