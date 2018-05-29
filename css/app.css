@@ -61,7 +61,7 @@ li {
     height: 120px;
     /* max-width: 20%; */
     background: #2e3d49;
-    /* font-size: 0; */
+    font-size: 0;
     color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
@@ -71,8 +71,8 @@ li {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-/* .deck .cards.open {
-    transform: rotateY(0);
+.deck .cards.open {
+    /* transform: rotateY(0); */
     background: #02b3e4;
     cursor: default;
 }
@@ -85,7 +85,7 @@ li {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
-} */
+}
 
 /*
  * Styles for the Score Panel
