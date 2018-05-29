@@ -3,7 +3,7 @@ $(document).ready(function () {
     /*
      * Create a list that holds all of your cards
      */
-    const icons = ['burn', 'burn', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'code', 'code', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
+    const icons = ['fire', 'fire', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'code', 'code', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
 
     const $deck = $('.deck');
     /*
@@ -55,7 +55,7 @@ $(document).ready(function () {
         // A for loop creates 16  <li> tags with the class of card for every <i> tag
         // A class of fa fa- and a name of each object from the objects=[] array
         for (let i = 0; i < allCards.length; i++) {
-            $deck.append($('<li class="cards col-3 "><i class="fa fa-' + allCards[i] + '"></i></li>'))
+            $deck.append($('<li class="col-3 p-2"><div class="cards p-4"><i class="fa fa-' + allCards[i] + '"></i></div></li>'))
         }
     }
 
