@@ -71,7 +71,7 @@ function flip() {
 
         if (flipped.length > 1) {
             if (card === flipped[0]) {
-                $open.addClass('match');
+                $('.open').addClass('match');
                 setTimeout(function () {
                     $deck.find('.open').removeClass('open show');
                 }, 420);
