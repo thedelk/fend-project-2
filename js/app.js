@@ -5,7 +5,7 @@
  *   - add each card's HTML to the page
  */
 
- /*
+/*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
@@ -24,7 +24,7 @@
 const icons = ['fire', 'fire', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'code', 'code', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
 
 const $deck = $('.deck');
-$open = $('.open');
+var $open = $('.open');
 // const $card = $('.cards');
 let flipped = [];
 
@@ -73,17 +73,16 @@ function flip() {
             if (card === flipped[0]) {
                 $('.open').addClass('match');
                 setTimeout(function () {
-                    $deck.find('.open').removeClass('open show');
+                    $('.open').removeClass('open show');
                 }, 420);
             } else {
                 // $('.open').removeClass('open');
                 setTimeout(function () {
-                    $deck.find('.open').removeClass('open show');
+                    $('.open').removeClass('open show');
                 }, 210);
             }
             flipped = [];
         }
-
     })
 }
 
