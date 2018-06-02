@@ -133,10 +133,10 @@ function moveCounter() {
       console.log('Case 1: ' + $movesLabel.html());
       $movesLabel.html('Move');
       break;
-    case 3:
+    case 15:
       removeStar();
       break;
-    case 6:
+    case 20:
       removeStar();
       break;
     case 25:
