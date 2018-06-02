@@ -1,11 +1,11 @@
 html {
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    /* box-sizing: inherit; */
+    box-sizing: inherit;
 }
 
 html,
@@ -40,6 +40,18 @@ li {
  * Styles for the deck of cards
  */
 
+ /* .align-items-center div {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+    display: flex;
+    justify-content: center;
+} */
+
+/* .square {
+    display: flex;
+    align-items: center;
+} */
+
 .deck {
     /* width: 660px; */
     /* min-height: 680px; */
@@ -54,10 +66,15 @@ li {
     font-size: 0;
     color: #ffffff;
     border-radius: 6px;
+    /* align-self: center; */
     cursor: pointer;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
     /* -webkit-animation-duration: .5s; */
     /* animation-duration: .5s; */
+}
+
+.deck .li {
+    align-content: center;
 }
 
 .square-hover {
@@ -96,21 +113,27 @@ li {
     font-size: 33px;
 }
 
+.score-panel i {
+    /* padding: 15px; */
+    /* line-height: 40px; */
+    /* font-size: 20px; */
+}
+
 /*
  * Styles for the Score Panel
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
+    /* text-align: left; */
+    /* width: 345px; */
+    /* margin-bottom: 10px; */
 }
 
 .score-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+    /* margin: 0; */
+    /* padding: 0; */
+    /* display: inline-block; */
+    /* margin: 0 5px 0 0; */
 }
 
 .score-panel .stars li {
@@ -119,6 +142,6 @@ li {
 }
 
 .score-panel .restart {
-    float: right;
+    /* float: right; */
     cursor: pointer;
 }

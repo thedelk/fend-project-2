@@ -5,47 +5,50 @@
     <meta charset="utf-8">
     <title>Memory Match // Ryan Delk</title>
     <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="css/vex.css">
+    <link rel="stylesheet" href="css/vex-theme-default.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body>
 
     <div class="container">
-        <div class="row">
-            <header>
-                <h1>Memory Match</h1>
-            </header>
-        </div>
+        <header class="row text-center">
+            <h1 class="col pt-3 mt-3">Memory Match</h1>
+        </header>
 
-        <div class="row">
-            <section class="score-panel">
-                <ul class="stars">
-                    <li>
-                        <i class="fa fa-star"></i>
-                    </li>
-                    <li>
-                        <i class="fa fa-star"></i>
-                    </li>
-                    <li>
-                        <i class="fa fa-star"></i>
-                    </li>
-                </ul>
+        <section class="row score-panel">
+            <ul class="stars col-4 m-0 p-3">
+                <li>
+                    <i class="fas fa-star"></i>
+                </li>
+                <li>
+                    <i class="fas fa-star"></i>
+                </li>
+                <li>
+                    <i class="fas fa-star"></i>
+                </li>
+            </ul>
 
+            <div class="col-4 m-0 p-3 text-center">
                 <span class="moves">0</span>
                 <span class="moves-label">Moves</span>
+            </div>
 
-                <div class="restart">
-                    <i class="fa fa-repeat"></i>
-                </div>
-            </section>
-        </div>
+            <div class="restart col-4 m-0 p-3 text-right">
+                <i class="fas fa-redo"></i>
+            </div>
+        </section>
 
-        <ul class="row deck p-4" />
+        <ul class="row deck p-4 text-center align-items-center">
+            <!-- Created dynamically via js/app.js -->
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
@@ -54,7 +57,7 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
-    <!-- <script src="js/app.js"></script> -->
+    <script src="js/vex.combined.min.js"></script>
     <script src="js/app2.js"></script>
 </body>
 

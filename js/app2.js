@@ -1,8 +1,12 @@
 //  Variables
-const arrIcons = ['fire', 'fire', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'code', 'code', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
+const arrIcons = ['burn', 'burn', 'infinity', 'infinity', 'moon', 'moon', 'skull', 'skull', 'code-branch', 'code-branch', 'terminal', 'terminal', 'crow', 'crow', 'seedling', 'seedling'];
 let arrIconsOpen = [];
 let $deck = $('.deck');
-let moves = 0;
+// let $matches = $('.match').length / 2;
+let $moves = $('.moves');
+let $movesLabel = $('.moves-label');
+let $reset = $('.fa-redo');
+let movesCount = 0;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -13,7 +17,7 @@ let moves = 0;
 function createSquares() {
   let icons = shuffle(arrIcons);
   for (let icon of icons) {
-    $deck.append($('<li class="col-3 p-3"><div class="square p-3 animated"><i class="fa fa-' + icon + '"></i></div></li>'));
+    $deck.append($('<li class="col-3 p-3"><div class="square p-3 d-flex align-items-center justify-content-center animated"><i class="fas fa-' + icon + '"></i></div></li>'));
   }
 };
 
@@ -74,13 +78,22 @@ function flipSquares() {
 
 //  Check if squares match
 function checkMatch() {
+
+
   if (arrIconsOpen[0] === arrIconsOpen[1]) {
     $deck.find('.open').removeClass('open show flipInY shake').addClass('match rubberBand');
   } else {
     $deck.find('.open').addClass('shake');
-    setTimeout(function() {
+    setTimeout(function () {
       $deck.find('.open').removeClass('open show flipInY');
     }, 600);
+  }
+
+  let $matches = $('.match').length / 2;
+
+  if ($matches === 2) {
+    console.log('entered wincon if statement: ' + $matches);
+    winGame();
   }
   arrIconsOpen = [];
   moveCounter();
@@ -88,40 +101,101 @@ function checkMatch() {
 
 
 
+function winGame() {
+  let starCount = $('.fas.fa-star').length;
+  vex.dialog.confirm({
+    message: `Way to go! You just won the game with ${starCount}/3 star rating. Do you want to play again?`,
+    callback: function (value) {
+      if (value) {
+        resetGame();
+      }
+    }
+  });
+}
+
+
+
 function removeStar() {
-  let $star = $('.fa-star:last');
-  $star.toggleClass('fa-star fa-star-o');
+  let $star = $('.fas.fa-star:last');
+  $star.toggleClass('fas far');
 };
 
 
 
 // Increment moves
 function moveCounter() {
-  moves++;
+  movesCount++;
 
-  if (moves === 1) {
-    $('.moves-label').html('Move');
-  } else {
-    $('.moves-label').html('Moves');
+  console.log(movesCount);
+
+  switch (movesCount) {
+    case 1:
+      console.log('Case 1: ' + $movesLabel.html());
+      $movesLabel.html('Move');
+      break;
+    case 3:
+      removeStar();
+      break;
+    case 6:
+      removeStar();
+      break;
+    case 25:
+      removeStar();
+      break;
+    default:
+      $movesLabel.html('Moves');
   }
 
-  if (moves === 10 || moves === 15) {
-    removeStar();
-  }
+  // if (movesCount === 1) {
+  //   $movesLabel.html('Move');
+  // } else {
+  //   $movesLabel.html('Moves');
+  // }
 
-  $('.moves').html(moves);
+  // if (movesCount === 3 || movesCount === 6 || movesCount === 25) {
+  //   removeStar();
+  // }
+
+  $moves.html(movesCount);
+};
+
+function resetGameWarning() {
+  vex.dialog.confirm({
+    message: `Are you sure you wish to reset?`,
+    callback: function (value) {
+      if (value) {
+        resetGame();
+      }
+    }
+  });
+};
+
+function resetGame() {
+  $deck.empty();
+  movesCount = -1;
+  moveCounter();
+  console.log('resetGame after moveCounter ' + movesCount);
+  $('.far.fa-star').toggleClass('fas far');
+  arrIconsOpen = [];
+  init();
 };
 
 
 
 //  Document ready - initialize
 function init() {
-  $deck.empty();
   createSquares();
+
+  let $square = $('.square');
+
   hoverSquare();
-  $('.square').click(flipSquares);
+  $square.click(flipSquares);
+  vex.defaultOptions.className = 'vex-theme-default';
+  vex.dialog.buttons.YES.text = 'Yes';
+  vex.dialog.buttons.NO.text = 'No';
 };
 
 $(document).ready(function () {
   init();
-})
+  $reset.click(resetGameWarning);
+});
