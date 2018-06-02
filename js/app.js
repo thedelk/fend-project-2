@@ -16,17 +16,85 @@
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-// $(document).ready(function () {
-
 /*
  * Create a list that holds all of your cards
  */
-const icons = ['fire', 'fire', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'code', 'code', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
+const iconsAll = ['fire', 'fire', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'code', 'code', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
+let iconsOpen = [];
 
 const $deck = $('.deck');
-var $open = $('.open');
-// const $card = $('.cards');
-let flipped = [];
+
+function flip() {
+    $('.cards').click(function () {
+        let $this = $(this);
+        let card = $this.html();
+        // console.log(card);
+
+        if (iconsOpen.length < 2) {
+            iconsOpen.push($this);
+            $this.toggleClass('open show');
+        }
+
+        if (iconsOpen.length === 2) {
+            // console.log(iconsOpen[0]);
+            // console.log(iconsOpen[1]);
+            checkMatch();
+        }
+
+        // if ($this.hasClass('show') || $this.hasClass('open')) {
+        //     return true;
+        // };
+
+        // if (flipped.length < 2) {
+        //     $this.toggleClass('open show');
+        //     flipped.push($this);
+        // }
+
+        // if (flipped.length > 1) {
+        //     if (card === flipped[0]) {
+        //         setMatch($this);
+        //     } else {
+        //         setNotMatch($this);
+        //     }
+        //     flipped = [];
+        // }
+    })
+};
+
+function getClassFromCard(card){
+    return card[0].firstChild.className;
+}
+
+function checkMatch() {
+    // var childOne = getClassFromCard(iconsOpen[0]);
+    // var childTwo = getClassFromCard(iconsOpen[1]);
+    // console.log(childOne);
+    // console.log(childTwo);
+
+    console.log('Entered checkMatch');
+    console.log(iconsOpen[0].firstChild.className);
+    if (getClassFromCard(iconsOpen[0]) === getClassFromCard(iconsOpen[1])) {
+    // if (iconsOpen[0] === iconsOpen[1]) {
+        console.log('Confirmed match');
+        $('.deck').find('.open').toggleClass('open show match');
+    } else {
+        console.log('No match');
+        setTimeout(function() {
+            $('.deck').find('.open').toggleClass('open show');
+        }, 1000);
+    }
+    iconsOpen = [];
+};
+
+function setMatch($this) {
+    $this.addClass('match').removeClass('open show flipInY');
+};
+
+function setNotMatch($this) {
+    setTimeout(function () {
+        $this.removeClass('open show rubberBand');
+    }, 1000);
+};
 
 function shuffle(array) {
     var currentIndex = array.length,
@@ -39,54 +107,22 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
-}
+};
+
+function createSquares() {
+    let icons = shuffle(iconsAll);
+    for (let icon of icons) {
+        $deck.append($('<li class="col-3 p-3"><div class="cards p-3 animated"><i class="fa fa-' + icon + '"></i></div></li>'));
+    }
+};
 
 function initialize() {
-    let allIcons = shuffle(icons);
     $deck.empty();
-
-    for (let icon of allIcons) {
-        $deck.append($('<li class="col-3 p-3"><div class="cards p-3"><i class="fa fa-' + icon + '"></i></div></li>'));
-    }
-
+    createSquares();
     flip();
 };
 
-function flip() {
-    const $card = $('.cards');
-    $card.click(function () {
-        console.log($open);
-        let $this = $(this);
-
-        // if ($this.hasClass('show') || $this.hasClass('match')) {
-        //     return true;
-        //     console.log('Returned true');
-        // }
-
-        let card = $this.html();
-        $this.addClass('open show');
-        flipped.push(card);
-
-        if (flipped.length > 1) {
-            if (card === flipped[0]) {
-                $('.open').addClass('match');
-                setTimeout(function () {
-                    $('.open').removeClass('open show');
-                }, 420);
-            } else {
-                // $('.open').removeClass('open');
-                setTimeout(function () {
-                    $('.open').removeClass('open show');
-                }, 210);
-            }
-            flipped = [];
-        }
-    })
-}
-
-
-initialize();
-
-// })
+$(document).ready(function () {
+    initialize();
+})

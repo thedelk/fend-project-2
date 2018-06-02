@@ -17,15 +17,12 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
 
 .container {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
     height: 680px;
     max-width: 660px;
 }
@@ -47,41 +44,53 @@ li {
     /* width: 660px; */
     /* min-height: 680px; */
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    /* padding: 32px; */
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    /* margin: 0 0 3em; */
 }
 
-.deck .cards {
+.deck .square {
     height: 120px;
-    /* max-width: 20%; */
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    /* -webkit-animation-duration: .5s; */
+    /* animation-duration: .5s; */
 }
 
-.deck .cards.open {
-    /* transform: rotateY(0); */
+.square-hover {
+    transform: scale(1.02);
+    box-shadow: 5px 10px 20px rgba(46, 61, 73, 0.5);
+}
+
+.square.animated.flipInY {
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+     -ms-animation-duration: .5s;
+      -o-animation-duration: .5s;
+         animation-duration: .5s;
+}
+
+/* .shake {
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+     -ms-animation-duration: .5s;
+      -o-animation-duration: .5s;
+         animation-duration: .5s;
+} */
+
+.deck .square.open {
     background: #02b3e4;
     cursor: default;
 }
 
-.deck .cards.show {
+.deck .square.show {
     font-size: 33px;
 }
 
-.deck .cards.match {
+.deck .square.match {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
