@@ -7,14 +7,20 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+A modern look at the classic memory game!
 
-To get started, open `js/app.js` and start building out the app's functionality
+To get started, open [the GitHub pages site for this repo](https://thedelk.github.io/fend-project-2/) and start clicking on squares!
+
+A star will be deducted after so many failed matches, so strain that brain!
+
+* 15 Moves
+* 20 Moves
+* 25 Moves
 
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository was built off of the start code and heavily modified _(to be honest, having to build off of naming and styling conventions others have started kind of throws me off!)_.  I don't foresee this needing collaborative effort, so pull requests will probably be denied, but feel free to fork or clone if you wish!
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+There is a [CONTRIBUTING.md](CONTRIBUTING.md), but you won't find anything there!
