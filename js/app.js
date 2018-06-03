@@ -24,7 +24,8 @@
 //
 //  3. SCORING
 //    a. Stars..............Functions to decrement stars
-//    b. Win................Declare when game is won
+//    b. Timer..............Functions to time the current game
+//    c. Win................Declare when game is won
 //
 //
 //
@@ -49,8 +50,11 @@ let $deck = $('.deck'),
   $moves = $('.moves'),
   $movesLabel = $('.moves-label'),
   $reset = $('.fa-redo'),
+  $timer = $('.timer'),
+  $timerLabel = $('.timer-label'),
   arrIconsOpen = [],
-  movesCount = 0;
+  movesCount = 0,
+  timeCount = 0;
 
 
 // Run after the page has finished loading
@@ -93,7 +97,7 @@ function createSquares() {
   let icons = shuffle(arrIcons);
   for (let icon of icons) {
     $deck.append($('<li class="col-3 p-3"><div class="square p-3 d-flex align-items-center justify-content-center animated"><i class="fas fa-' + icon + '"></i></div></li>'));
-  }
+  };
 };
 
 // Function to shuffle array items
@@ -122,6 +126,7 @@ function resetGame() {
   $deck.empty();
   movesCount = -1;
   moveCounter();
+  timeCount = 0;
   $('.far.fa-star').toggleClass('fas far');
   arrIconsOpen = [];
   init();
@@ -155,7 +160,7 @@ function checkMatch() {
     setTimeout(function () {
       $deck.find('.open').addClass('shake').removeClass('open show flipInY');
     }, 500);
-  }
+  };
 
   // If all squares have been matched, win the game
   let $matches = $('.match').length;
@@ -186,7 +191,12 @@ function flipSquares() {
   // Prevent flipping over more than two cards at once
   if ($this.hasClass('open') || $this.hasClass('match') || $('.open').length === 2) {
     return;
-  }
+  };
+
+  // Start timer when first square is clicked
+  if (arrIconsOpen.length > 0) {
+    startTimer();
+  };
 
   // If the temporary array doesn't yet have two items in it
   if (arrIconsOpen.length < 2) {
@@ -194,12 +204,12 @@ function flipSquares() {
 
     // Add class of clicked square to the temp array
     arrIconsOpen.push($thisClass);
-  }
+  };
 
   // If two squares have been flipped, check to see if they match
   if (arrIconsOpen.length === 2) {
     checkMatch();
-  }
+  };
 };
 
 // Styling when hovering over a square that hasn't been flipped
@@ -257,7 +267,24 @@ function moveCounter() {
 
 
 ///////////////////////////////////////
-//  3b. Win
+//  3b. Timer
+///////////////////////////////////////
+
+function startTimer() {
+  // timeCount = 0;
+
+  // if (movesCount > 0) {
+    setInterval(function(){
+      timeCount++;
+      $timer.html(timeCount);
+    }, 1000);
+  // };
+};
+
+
+
+///////////////////////////////////////
+//  3c. Win
 ///////////////////////////////////////
 
 // Modal dialog to announce that game has been won
@@ -277,4 +304,4 @@ function winGame() {
       }
     }
   });
-}
+};
