@@ -25,6 +25,15 @@
     1. Global
 **************************************/
 
+/* Defining color palette to be used throughout CSS */
+:root {
+    --color-gradient-1: #02ccba;
+    --color-gradient-2: #aa7ecd;
+    --color-square-open: #02b3e4;
+    --color-square-match: #02ccba;
+    --color-shadow: rgba(46, 61, 73, 0.5);
+}
+
 html {
     box-sizing: border-box;
 }
@@ -70,16 +79,16 @@ li {
 
 /* Background container for squares */
 .deck {
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, var(--color-gradient-1) 0%, var(--color-gradient-2) 100%);
     border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 12px 15px 20px var(--color-shadow);
 }
 
 /* Default square styling */
 .deck .square {
     background: #2e3d49;
     border-radius: 6px;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 5px 2px 20px var(--color-shadow);
     color: #ffffff;
     cursor: pointer;
     height: 120px;
@@ -93,13 +102,13 @@ li {
 
 /* Emphasize square on hover */
 .square-hover {
+    box-shadow: 5px 10px 20px var(--color-shadow);
     transform: scale(1.02);
-    box-shadow: 5px 10px 20px rgba(46, 61, 73, 0.5);
 }
 
 /* Change background color of square that has been flipped */
 .deck .square.open {
-    background: #02b3e4;
+    background: var(--color-square-open);
     cursor: default;
 }
 
@@ -110,8 +119,8 @@ li {
 
 /* Change styling to identify squares that have been matched */
 .deck .square.match {
+    background: var(--color-square-match);
     cursor: default;
-    background: #02ccba;
     font-size: 33px;
 }
 
@@ -123,8 +132,8 @@ li {
 
 /* Keep star icons in a horizontal line */
 .score-panel .stars li {
-    list-style: none;
     display: inline-block;
+    list-style: none;
 }
 
 /* Make cursor a pointer to show that "Reset" icon is clickable */
@@ -140,9 +149,9 @@ li {
 
 /* Animation speed */
 .square.animated.flipInY {
-    animation-duration: .5s;
-    -o-animation-duration: .5s;
-    -ms-animation-duration: .5s;
-    -moz-animation-duration: .5s;
-    -webkit-animation-duration: .5s;
+    animation-duration: 0.5s;
+    -o-animation-duration: 0.5s;
+    -ms-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
 }
