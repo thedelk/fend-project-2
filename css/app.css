@@ -1,3 +1,26 @@
+/******************************************************************************
+  MASTER STYLESHEET
+
+
+
+  INFORMATION
+  Project...................Memory Game
+  Purpose...................Udacity Front-End Nanodegree Program
+                            Project 2
+  Creator...................Ryan Delk
+  Last Change...............June 3, 2018
+
+
+
+  CONTENTS
+  I.    Global...............Globally-available variables and config
+  II.   Styles...............All text styles
+  III.  Behavior.............Transitions
+  IV.   Other................Various element spacing and sizing
+  V.    Media................Media queries and breakpoints
+
+******************************************************************************/
+
 html {
     box-sizing: border-box;
 }
