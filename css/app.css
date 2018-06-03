@@ -13,13 +13,17 @@
 
 
   CONTENTS
-  I.    Global...............Globally-available variables and config
-  II.   Styles...............All text styles
-  III.  Behavior.............Transitions
-  IV.   Other................Various element spacing and sizing
-  V.    Media................Media queries and breakpoints
+  1. Global.................Global variables and styles
+  2. Squares................Square styling
+  3. Scoring................Score panel styling
+  4. Animation..............Animation speeds
+  5. Media..................Media queries and breakpoints
 
 ******************************************************************************/
+
+/**************************************
+    1. Global
+**************************************/
 
 html {
     box-sizing: border-box;
@@ -33,15 +37,14 @@ html {
 
 html,
 body {
-    /* width: 100%; */
-    /* height: 100%; */
-    /* margin: 0; */
-    /* padding: 0; */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 body {
     background: #ffffff url('../img/geometry2.png');
-    /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
 
@@ -59,112 +62,87 @@ li {
     list-style: none;
 }
 
-/*
- * Styles for the deck of cards
- */
 
- /* .align-items-center div {
-    -ms-flex-align: center!important;
-    align-items: center!important;
-    display: flex;
-    justify-content: center;
-} */
 
-/* .square {
-    display: flex;
-    align-items: center;
-} */
+/**************************************
+    2. Squares
+**************************************/
 
+/* Background container for squares */
 .deck {
-    /* width: 660px; */
-    /* min-height: 680px; */
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+/* Default square styling */
 .deck .square {
-    height: 120px;
     background: #2e3d49;
-    font-size: 0;
-    color: #ffffff;
     border-radius: 6px;
-    /* align-self: center; */
-    cursor: pointer;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    /* -webkit-animation-duration: .5s; */
-    /* animation-duration: .5s; */
+    color: #ffffff;
+    cursor: pointer;
+    height: 120px;
+    font-size: 0;
 }
 
+/* List items under the deck */
 .deck .li {
     align-content: center;
 }
 
+/* Emphasize square on hover */
 .square-hover {
     transform: scale(1.02);
     box-shadow: 5px 10px 20px rgba(46, 61, 73, 0.5);
 }
 
-.square.animated.flipInY {
-    -webkit-animation-duration: .5s;
-    -moz-animation-duration: .5s;
-     -ms-animation-duration: .5s;
-      -o-animation-duration: .5s;
-         animation-duration: .5s;
-}
-
-/* .shake {
-    -webkit-animation-duration: .5s;
-    -moz-animation-duration: .5s;
-     -ms-animation-duration: .5s;
-      -o-animation-duration: .5s;
-         animation-duration: .5s;
-} */
-
+/* Change background color of square that has been flipped */
 .deck .square.open {
     background: #02b3e4;
     cursor: default;
 }
 
+/* Make icons appear when square is flipped */
 .deck .square.show {
     font-size: 33px;
 }
 
+/* Change styling to identify squares that have been matched */
 .deck .square.match {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
 }
 
-.score-panel i {
-    /* padding: 15px; */
-    /* line-height: 40px; */
-    /* font-size: 20px; */
-}
 
-/*
- * Styles for the Score Panel
- */
 
-.score-panel {
-    /* text-align: left; */
-    /* width: 345px; */
-    /* margin-bottom: 10px; */
-}
+/**************************************
+    3. Scoring
+**************************************/
 
-.score-panel .stars {
-    /* margin: 0; */
-    /* padding: 0; */
-    /* display: inline-block; */
-    /* margin: 0 5px 0 0; */
-}
-
+/* Keep star icons in a horizontal line */
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
 }
 
+/* Make cursor a pointer to show that "Reset" icon is clickable */
 .score-panel .restart {
-    /* float: right; */
     cursor: pointer;
+}
+
+
+
+/**************************************
+    4. Animation
+**************************************/
+
+/* Animation speed */
+.square.animated.flipInY {
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    -ms-animation-duration: .5s;
+    -o-animation-duration: .5s;
+    animation-duration: .5s;
 }
