@@ -54,6 +54,7 @@ let $deck = $('.deck'),
   $timerLabel = $('.timer-label'),
   arrIconsOpen = [],
   movesCount = 0,
+  paused = false,
   started = false,
   timeCount = 0;
 
@@ -127,6 +128,8 @@ function resetGame() {
   $deck.empty();
   movesCount = -1;
   moveCounter();
+  paused = false;
+  $timerLabel.html('Seconds');
   $('.far.fa-star').toggleClass('fas far');
   arrIconsOpen = [];
   resetTimer();
@@ -135,12 +138,16 @@ function resetGame() {
 
 // Modal dialog to confirm reset
 function resetGameWarning() {
+  paused = true;
+
   vex.dialog.confirm({
     message: `Are you sure you wish to reset?`,
     callback: function (value) {
       if (value) {
         resetGame();
-      };
+      } else {
+        paused = false;
+      }
     }
   });
 };
@@ -164,8 +171,7 @@ function checkMatch() {
   };
 
   // If all squares have been matched, win the game
-  let $matches = $('.match').length;
-  if ($matches === 16) {
+  if ($('.match').length === 16) {
     winGame();
   };
 
@@ -231,6 +237,9 @@ function hoverSquare() {
 function removeStar() {
   let $star = $('.fas.fa-star:last');
   $star.toggleClass('fas far');
+
+  // Get current star count
+  let starCount = $('.fas.fa-star').length;
 };
 
 // Increment moves
@@ -271,25 +280,31 @@ function moveCounter() {
 //  3b. Timer
 ///////////////////////////////////////
 
+// Start the timer
 function startTimer() {
-  timeCountVar = setInterval(function() {
-    timeCount++;
 
-    // Grammar check so timer doesn't read "1 Seconds"
-    if (timeCount === 1) {
-      $timerLabel.html('Second');
-    } else {
-      $timerLabel.html('Seconds');
+  // Increment the counter every second
+  timeCountVar = setInterval(function () {
+
+    // Only increment if the game isn't "paused" (a modal window is open)
+    if (paused === false) {
+      timeCount++;
+
+      // Grammar check so timer doesn't read "1 Seconds"
+      if (timeCount === 1) {
+        $timerLabel.html('Second');
+      } else {
+        $timerLabel.html('Seconds');
+      }
+      $timer.html(timeCount);
     }
-    $timer.html(timeCount);
   }, 1000);
+
+  // Game has been started
   started = true;
 };
 
-function pauseTimer() {
-
-};
-
+// Clear the timer when game is reset
 function resetTimer() {
   started = false;
   timeCount = 0;
@@ -307,18 +322,22 @@ function resetTimer() {
 // Modal dialog to announce that game has been won
 function winGame() {
 
-  // Get current star count
-  let starCount = $('.fas.fa-star').length;
+  // Pause the timer
+  paused = true;
+
+
+  console.log(starCount);
 
   // Announcement and option to reset
   vex.dialog.confirm({
     unsafeMessage: `<div class="text-center"><p>Way to go!</p>` +
       `<p>You just won the game with ${starCount}/3 star rating.</p>` +
-      `<p>Do you want to play again?</p></div>`,
+      `<p>It took you ${timeCount} seconds to complete.</p>` +
+      `<p>Would you like to play again?</p></div>`,
     callback: function (value) {
       if (value) {
         resetGame();
-      };
+      }
     }
   });
 };
