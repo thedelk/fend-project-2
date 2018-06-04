@@ -54,6 +54,7 @@ let $deck = $('.deck'),
   $timerLabel = $('.timer-label'),
   arrIconsOpen = [],
   movesCount = 0,
+  started = false,
   timeCount = 0;
 
 
@@ -126,9 +127,9 @@ function resetGame() {
   $deck.empty();
   movesCount = -1;
   moveCounter();
-  timeCount = 0;
   $('.far.fa-star').toggleClass('fas far');
   arrIconsOpen = [];
+  resetTimer();
   init();
 };
 
@@ -139,7 +140,7 @@ function resetGameWarning() {
     callback: function (value) {
       if (value) {
         resetGame();
-      }
+      };
     }
   });
 };
@@ -166,7 +167,7 @@ function checkMatch() {
   let $matches = $('.match').length;
   if ($matches === 16) {
     winGame();
-  }
+  };
 
   // Clear temp array, increment move count
   arrIconsOpen = [];
@@ -194,7 +195,7 @@ function flipSquares() {
   };
 
   // Start timer when first square is clicked
-  if (arrIconsOpen.length > 0) {
+  if (started === false) {
     startTimer();
   };
 
@@ -271,14 +272,30 @@ function moveCounter() {
 ///////////////////////////////////////
 
 function startTimer() {
-  // timeCount = 0;
+  timeCountVar = setInterval(function() {
+    timeCount++;
 
-  // if (movesCount > 0) {
-    setInterval(function(){
-      timeCount++;
-      $timer.html(timeCount);
-    }, 1000);
-  // };
+    // Grammar check so timer doesn't read "1 Seconds"
+    if (timeCount === 1) {
+      $timerLabel.html('Second');
+    } else {
+      $timerLabel.html('Seconds');
+    }
+    $timer.html(timeCount);
+  }, 1000);
+  started = true;
+};
+
+function pauseTimer() {
+
+};
+
+function resetTimer() {
+  started = false;
+  timeCount = 0;
+  $timer.html(timeCount);
+
+  clearInterval(timeCountVar);
 };
 
 
@@ -301,7 +318,7 @@ function winGame() {
     callback: function (value) {
       if (value) {
         resetGame();
-      }
+      };
     }
   });
 };
