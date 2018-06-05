@@ -264,9 +264,6 @@ function moveCounter() {
     case 20:
       removeStar();
       break;
-    case 25:
-      removeStar();
-      break;
     default:
       break;
   }
@@ -326,6 +323,7 @@ function winGame() {
   // Pause the timer
   paused = true;
 
+  // Reach for the stars
   let starCount = $('.fas.fa-star').length;
 
   // Announcement and option to reset

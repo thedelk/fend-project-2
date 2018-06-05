@@ -15,7 +15,6 @@ A star will be deducted after so many failed matches, so strain that brain!
 
 * 15 Moves
 * 20 Moves
-* 25 Moves
 
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
