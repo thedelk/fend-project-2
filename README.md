@@ -3,6 +3,7 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [Dependencies](#dependencies)
 * [Contributing](#contributing)
 
 ## Instructions
@@ -17,6 +18,23 @@ A star will be deducted after so many failed matches, so strain that brain!
 * 20 Moves
 
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+
+## Dependencies
+
+I definitely need to give credit to the authors and contributors to the libraries used in this project.  You all have created some amazing tools and I am super thankful for being able to use them!
+
+### CSS
+
+* [Bootstrap](http://getbootstrap.com)
+* [Animate.css](https://daneden.github.io/animate.css)
+
+### JS
+
+* [Vex](http://github.hubspot.com/vex/)
+
+### Others
+
+* [Font Awesome](https://fontawesome.com)
 
 ## Contributing
 
