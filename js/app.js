@@ -8,7 +8,7 @@
 //  Purpose.................Udacity Front-End Nanodegree Program
 //                          Project 2
 //  Creator.................Ryan Delk
-//  Last Change.............June 3, 2018
+//  Last Change.............June 5, 2018
 //
 //
 //
@@ -57,7 +57,6 @@ let $deck = $('.deck'),
   paused = false,
   started = false,
   timeCount = 0;
-
 
 // Run after the page has finished loading
 $(document).ready(function () {
@@ -170,14 +169,16 @@ function checkMatch() {
     }, 500);
   };
 
+  // Increment move count
+  moveCounter();
+
   // If all squares have been matched, win the game
   if ($('.match').length === 16) {
     winGame();
   };
 
-  // Clear temp array, increment move count
+  // Clear temp array
   arrIconsOpen = [];
-  moveCounter();
 };
 
 
@@ -238,8 +239,8 @@ function removeStar() {
   let $star = $('.fas.fa-star:last');
   $star.toggleClass('fas far');
 
-  // Get current star count
-  let starCount = $('.fas.fa-star').length;
+  // // Get current star count
+  // let starCount = $('.fas.fa-star').length;
 };
 
 // Increment moves
@@ -325,11 +326,11 @@ function winGame() {
   // Pause the timer
   paused = true;
 
-
-  console.log(starCount);
+  let starCount = $('.fas.fa-star').length;
 
   // Announcement and option to reset
   vex.dialog.confirm({
+    // message: 'You win with ' + (3 - $('.star').length) + ' or ' + starCount + ' stars',
     unsafeMessage: `<div class="text-center"><p>Way to go!</p>` +
       `<p>You just won the game with ${starCount}/3 star rating.</p>` +
       `<p>It took you ${timeCount} seconds to complete.</p>` +
